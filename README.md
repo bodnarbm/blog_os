@@ -10,3 +10,4 @@ writing a custom OS using Rust. For the original source material, please see <ht
 A list of deviations from the original source material.
 
 1. Using 2021 edition of Rust instead of 2018.
+2. Prefering str over bytes when possible.

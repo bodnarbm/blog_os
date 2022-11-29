@@ -3,7 +3,7 @@
 
 use core::panic::PanicInfo;
 
-static HELLO: &[u8] = b"Hello World!";
+static HELLO: &str = "Hello World!";
 static COLOR_BYTE_LIGHT_CYAN: u8 = 0xb;
 
 /// Panic handler
@@ -17,7 +17,7 @@ fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     let vga_buffer = 0xb8000 as *mut u8;
 
-    for (i, &byte) in HELLO.iter().enumerate() {
+    for (i, byte) in HELLO.bytes().enumerate() {
         unsafe {
             *vga_buffer.offset(i as isize * 2) = byte;
             *vga_buffer.offset(i as isize * 2 + 1) = COLOR_BYTE_LIGHT_CYAN;
