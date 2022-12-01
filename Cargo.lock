@@ -3,11 +3,21 @@
 version = 3
 
 [[package]]
+name = "atomic-polyfill"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d299f547288d6db8d5c3a2916f7b2f66134b15b8c1ac1c4357dd3b8752af7bb2"
+dependencies = [
+ "critical-section",
+]
+
+[[package]]
 name = "blog_os"
 version = "0.1.0"
 dependencies = [
  "bootloader",
- "lazy_static",
+ "critical-section",
+ "once_cell",
  "spin",
  "volatile",
 ]
@@ -19,12 +29,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b6e02311b16c9819e7c72866d379cdd3026c3b7b25c1edf161f548f8e887e7ff"
 
 [[package]]
-name = "lazy_static"
-version = "1.4.0"
+name = "critical-section"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+checksum = "6548a0ad5d2549e111e1f6a11a6c2e2d00ce6a3dafe22948d67c2b443f775e52"
+
+[[package]]
+name = "once_cell"
+version = "1.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "86f0b0d4bf799edbc74508c1e8bf170ff5f41238e5f8225603ca7caaae2b7860"
 dependencies = [
- "spin",
+ "atomic-polyfill",
+ "critical-section",
 ]
 
 [[package]]

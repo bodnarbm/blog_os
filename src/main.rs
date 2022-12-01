@@ -3,6 +3,7 @@
 
 use core::panic::PanicInfo;
 
+mod critical_section;
 mod vga_buffer;
 
 /// Panic handler
